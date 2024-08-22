@@ -1,60 +1,7 @@
 #!/usr/bin/python
 
-######################################################################################################
-##                                                                                                  ##
-##                                                                                                  ##
-##                                                                                                  ##
-##             ,FFFFFFF   ,II   ;RRRRR?    ;EEEEEEE  ,MM,    .MM     :OOOO:    :N,    :N            ##
-##             :FF`````   :II   :R````R?   :E;`````  :MM?    +MM   :OO?``+OO   :NN:   :N            ##
-##             :FF        :II   :R,  .?R   :E;       :MMM    MMM  :OO:    OO,  :NNN,  :N            ##
-##             :FF        :II   :R,  .?R   :E;       :MMM:  :MMM  :OO     :OO  :N,NN  :N            ##
-##             :FFFFFFF   :II   :R+;;*R+   :EEEEEEE  :MM:M::M;MM  :OO     :OO  :N `N: :N            ##
-##             :FF`````   :II   :RR`RR;    :E;`````  :MM ?MM% MM  :O*     :OO  :N  `N::N            ##
-##             :FF        :II   :R,  R+    :E;       :MM :MM: MM  'OO,    OO`  :N   `NNN            ##
-##             :FF        :II   :R,  `R;   :E;       :MM  ``  MM   :OO+,;OO,   :N    :NN            ##
-##             :FF        :II   :R,   RR;  :EEEEEEE  :MM      MM    `OOOOO ##  :N    'NN            ##
-##              ``         ``    ``   ```   ```````   ``      ``      ```       `     ``            ##
-##                                                                           ##                     ##
-##                                                                                                  ##
-##                         Populate Usage Data                                 ##                   ##
-##                         Version 1.01                                                             ##
-##                                                                                                  ##
-##                         Authors:                                                                 ##
-##                         Adam Gunderson (Adam.Gunderson@FireMon.com)                              ##
-##                         Spencer Carson (Spencer.Carson@FireMon.com)                              ##
-##                                                                                                  ##
-##    The code simulates usage data for FireMon security rules and then transmits this simulated    ##
-##    data to the FireMon collector API. This is likely for testing or demo purposes within your    ##
-##    FireMon environment.                                                                          ##
-##                                                                                                  ##
-##    Usage:                                                                                        ##
-##    Edit settings below, set the device group to target, and if you want to populate historical   ##
-##    usage. Will take a long time to run if doing several devices with historical usage.           ##
-##    If not doing historical usage the hits will appear at the time the script was ran.            ##
-##    When setting on a cronjob, pipe output to /dev/null to prevent system logs from filling up.   ##
-##                                                                                                  ##
-##    Example cron usage:                                                                           ##
-##    0 8 * * * /usr/bin/python3.9 /path/to/populateHits.py > /dev/null 2>&1                        ##
-##                                                                                                  ##
-##    To Do:                                                                                        ##
-##    - Optimize API calls, maybe one API call to post usage instead of several.                    ##
-##    - Human readable output (device names, rule names, object names etc).                         ##
-##    - Make the random number thresholds a configurable value.                                     ##
-##    - Currently this skips every 5 rules (so there is some unused rules) make that a configurable ##
-##      value.                                                                                      ##
-##                                                                                                  ##
-##    DISCLAIMER:                                                                                   ##
-##    The following Python script is provided "AS IS" without warranty of any kind.                 ##
-##    Users should use this script at their own risk. The author assumes no responsibility          ##
-##    for any potential damages or losses that may arise from its use.                              ##
-##    This script may not be suitable for all types of data or use cases,                           ##
-##    and it is up to the user to determine its applicability to their specific needs.              ##
-##                                                                                                  ##
-######################################################################################################
-
 import sys
 sys.path.append('/usr/lib/firemon/devpackfw/lib/python3.9/site-packages') 
-
 import requests
 import json
 import time
