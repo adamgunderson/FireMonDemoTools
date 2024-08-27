@@ -7,7 +7,7 @@ data to the FireMon collector API. This is likely for testing or demo purposes w
 FireMon environment.
 
 Usage: 
-Edit settings below, set the device group to target, and if you want to populate historical usage. Will take a long time to run if doing several devices with historical usage.
+Edit settings in the script, set the device group to target, and if you want to populate historical usage. Will take a long time to run if doing several devices with historical usage.
 If not doing historical usage the hits will appear at the time the script was ran.
 When setting on a cronjob, pipe output to /dev/null to prevent system logs from filling up.
 
