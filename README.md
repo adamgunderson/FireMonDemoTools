@@ -19,3 +19,8 @@ To Do:
 - Human readable output (device names, rule names, object names etc).
 - Make the random number thresholds a configurable value.
 - Currently this skips every 5 rules (so there is some unused rules) make that a configurable  value.
+
+## Scan Data Generator for Risk Analyzer
+This tool generates a CSV file containing scan data for use with Risk Analyzer. Provide IP subnets (both IPv4 and IPv6), and protocol/port pairs. The resulting data is downloaded as a CSV file, which can then be imported to a FireMon device group as Risk data.
+
+https://www.firemon.xyz/scan-data/
